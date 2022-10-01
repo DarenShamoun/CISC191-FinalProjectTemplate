@@ -16,6 +16,12 @@ public class WithdrawalScreen extends UserInterfaceJavaFX
     {
         final double[] moneyInWallet = User.getWalletAmount();
 
+        final int[][] preBuiltOptions = new int[2][2];
+        {
+            preBuiltOptions[0][0] = 100;
+            preBuiltOptions[0][1] = 1000;
+        }
+
         GridPane withdrawalPane = new GridPane();
         withdrawalPane.setPadding(new Insets(20, 20, 20, 20));
         withdrawalPane.setHgap(20);
@@ -55,7 +61,7 @@ public class WithdrawalScreen extends UserInterfaceJavaFX
         GridPane.setMargin(hundredWithdrawalButton, new Insets(10, 10, 10, 10));
         hundredWithdrawalButton.setOnAction(e ->
         {
-            moneyInWallet[0] -= 100.00;
+            moneyInWallet[0] -= preBuiltOptions[0][0];
             System.out.println(moneyInWallet[0]);
             currentWalletAmount.setText(moneyInWallet[0]+"");
         });
@@ -65,7 +71,7 @@ public class WithdrawalScreen extends UserInterfaceJavaFX
         GridPane.setMargin(thousandWithdrawalButton, new Insets(0, 10, 10, 10));
         thousandWithdrawalButton.setOnAction(e ->
         {
-            moneyInWallet[0] -= 1000.00;
+            moneyInWallet[0] -= preBuiltOptions[0][1];
             System.out.println(moneyInWallet[0]);
             currentWalletAmount.setText(moneyInWallet[0]+"");
         });

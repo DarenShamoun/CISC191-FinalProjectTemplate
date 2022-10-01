@@ -16,6 +16,12 @@ public class DepositScreen extends UserInterfaceJavaFX
         //local variable that holds users current money
         final double[] moneyInWallet = User.getWalletAmount();
 
+        final int[][] preBuiltOptions = new int[2][2];
+        {
+            preBuiltOptions[0][0] = 100;
+            preBuiltOptions[0][1] = 1000;
+        }
+
         GridPane depositPane = new GridPane();
         depositPane.setPadding(new Insets(20, 20, 20, 20));
         depositPane.setHgap(20);
@@ -58,7 +64,7 @@ public class DepositScreen extends UserInterfaceJavaFX
         GridPane.setMargin(hundredDepositButton, new Insets(10, 10, 10, 10));
         hundredDepositButton.setOnAction(e ->
         {
-            moneyInWallet[0] += 100.00;
+            moneyInWallet[0] += preBuiltOptions[0][0];
             System.out.println(moneyInWallet[0]);
             currentWalletAmount.setText(moneyInWallet[0]+"");
         });
@@ -68,7 +74,7 @@ public class DepositScreen extends UserInterfaceJavaFX
         GridPane.setMargin(thousandDepositButton, new Insets(10, 10, 10, 10));
         thousandDepositButton.setOnAction(e ->
         {
-            moneyInWallet[0] += 1000.00;
+            moneyInWallet[0] += preBuiltOptions[0][1];
             System.out.println(moneyInWallet[0]);
             currentWalletAmount.setText(moneyInWallet[0]+"");
         });
