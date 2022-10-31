@@ -26,15 +26,15 @@ public class LoginScreen
                 "  (Hint: Case sensitive)");
         GridPane.setHalignment(labelHint, HPos.LEFT);
 
-        //LastName text field and label
-        Label labelLastName = new Label("Lastname");
-        GridPane.setHalignment(labelLastName, HPos.LEFT);
-        TextField textFieldLastName = new TextField();
-
         //Firstname text field and label
         Label labelFirstName = new Label("Firstname:");
         GridPane.setHalignment(labelFirstName, HPos.LEFT);
         TextField textFieldFirstName = new TextField();
+
+        //LastName text field and label
+        Label labelLastName = new Label("Lastname");
+        GridPane.setHalignment(labelLastName, HPos.LEFT);
+        TextField textFieldLastName = new TextField();
 
         //Email text field and label
         Label labelEmail = new Label("Email:");
@@ -68,10 +68,10 @@ public class LoginScreen
 
         //sets the positions of the elements on the GridPane
         loginPane.add(labelHint, 1, 0);
-        loginPane.add(labelLastName, 0, 2);
-        loginPane.add(textFieldLastName, 1, 2);
-        loginPane.add(labelFirstName, 0, 3);
-        loginPane.add(textFieldFirstName, 1, 3);
+        loginPane.add(labelFirstName, 0, 2);
+        loginPane.add(textFieldFirstName, 1, 2);
+        loginPane.add(labelLastName, 0, 3);
+        loginPane.add(textFieldLastName, 1, 3);
         loginPane.add(labelEmail, 0, 4);
         loginPane.add(textFieldEmail, 1, 4);
         loginPane.add(buttonLogin, 1, 5);
