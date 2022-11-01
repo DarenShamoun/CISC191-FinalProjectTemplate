@@ -14,10 +14,10 @@ public class UserInterfaceJavaFX extends Application
     @Override
     public void start(Stage primaryStage)
     {
+        new UserDataHandling.CreateFile();
         //sets the initial scene to the login scene and gives it a title
         primaryStage.setScene(PreLoginSelectionScreen.preLogin(primaryStage));
         primaryStage.setTitle("The Totally NOT Fraudulent Bank");
         primaryStage.show();
-
     }
 }

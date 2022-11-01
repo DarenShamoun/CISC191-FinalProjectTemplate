@@ -17,8 +17,8 @@ public class PostLoginScreen extends UserInterfaceJavaFX
         postLoginPane.setPadding(new Insets(20, 20, 20, 20));
         postLoginPane.setHgap(20);
         postLoginPane.setVgap(20);
+        Scene postLoginScene = new Scene(postLoginPane, 500, 500);
 
-        Scene postLoginScene = new Scene(postLoginPane, 200, 260);
 
         //stores the local variable for the users money
         final double[] moneyInWallet = User.getWalletAmount();

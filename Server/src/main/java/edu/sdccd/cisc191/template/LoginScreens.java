@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.*;
+import java.util.Objects;
+
 public class LoginScreens
 {
     public static Scene newUser(Stage mainStage)
@@ -44,17 +47,44 @@ public class LoginScreens
         GridPane.setMargin(buttonLogin, new Insets(10, 0, 0, 0));
         buttonLogin.setOnAction(e ->
         {
-
             //takes the values from each textField and stores them
             String firstName = textFieldFirstName.getText();
             String lastName = textFieldLastName.getText();
             String email = textFieldEmail.getText();
             double[] wallet = {0.0};
 
-
-            //creates the user based on the information provided in the login fields
-            //the user has a default balance of 0
-            User newUser = new User(firstName, lastName, email, wallet);
+            Customer temp = new Customer(firstName,lastName,email,wallet);
+            try
+            {
+                File myObj = new File("userdata.txt");
+                if (myObj.createNewFile())
+                {
+                    System.out.println("User data file created: " + myObj.getName());
+                    try {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(myObj));
+                        writer.write("&" + firstName + "$" + lastName + "$" + email + "$" + wallet + "&");
+                        writer.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                else
+                {
+                    System.out.println("User data file already exists.");
+                    try {
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(myObj));
+                        writer.write("&" + firstName + "$" + lastName + "$" + email + "$" + wallet + "&");
+                        writer.close();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                UserDataHandling.writeObjectToFile(temp,myObj);
+            }
+            catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
 
             //testing
             System.out.println(firstName);
@@ -131,16 +161,29 @@ public class LoginScreens
             String email = textFieldEmail.getText();
             double[] wallet = {0.0};
 
-//            MAKE THE CODE TO CHECK IF THEY ARE IN DATABASE
-//
-//
-//
-//
-//
-//
-//
+            Customer temp = new Customer(firstName,lastName,email,wallet);
+            try
+            {
+                File myObj = new File("userdata.txt");
+                if (myObj.createNewFile())
+                {
+                    System.out.println("User data file created: " + myObj.getName());
+                }
+                else
+                {
+                    System.out.println("User data file already exists.");
+                }
+                Customer stored = UserDataHandling.readObjectFromFile(myObj);
+                if(!Objects.equals(temp, stored))
+                {
+                    labelHint.setText("The information you entered is invalid, try again.");
+                }
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            } catch (ClassNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
 
-            //displays the post login screen
             mainStage.setScene(PostLoginScreen.customerPostLogin(mainStage));
         });
 
@@ -209,16 +252,33 @@ public class LoginScreens
             String email = textFieldEmail.getText();
             double[] wallet = {0.0};
 
-//            CREATE CODE TO CHECK IF THEY ARE IN DATABASE
-//
-//
-//
-//
-//
-//
-//
+            Customer temp = new Customer(firstName,lastName,email,wallet);
+            try
+            {
+                File myObj = new File("userdata.txt");
+                if (myObj.createNewFile())
+                {
+                    System.out.println("User data file created: " + myObj.getName());
+                }
+                else
+                {
+                    System.out.println("User data file already exists.");
+                }
+                Customer stored = UserDataHandling.readObjectFromFile(myObj);
+                if(!Objects.equals(temp, stored))
+                {
+                    labelHint.setText("The information you entered is invalid, try again.");
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+
             //displays the post login screen
-            mainStage.setScene(PostLoginScreen.customerPostLogin(mainStage));
+            mainStage.setScene(PostLoginScreen.employeePostLogin(mainStage));
         });
 
         Button back = new Button("Back");

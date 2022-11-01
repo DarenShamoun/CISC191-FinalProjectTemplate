@@ -2,6 +2,7 @@ package edu.sdccd.cisc191.template;
 
 import com.sun.deploy.util.SessionState;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -58,6 +59,15 @@ public class PreLoginSelectionScreen
             mainStage.setScene(LoginScreens.newUser(mainStage));
         });
 
+        //takes the user to the Client scene
+        Button helpButton = new Button("Help");
+        GridPane.setMargin(helpButton, new Insets(0, 10, 0, 0));
+        GridPane.setHalignment(helpButton, HPos.RIGHT);
+        helpButton.setOnAction((ActionEvent e) ->
+        {
+           // mainStage.setScene(Client.display());
+        });
+
         //Exit button
         Button exitButton = new Button("Exit");
         GridPane.setMargin(exitButton, new Insets(0, 0, 0, 0));
@@ -74,6 +84,7 @@ public class PreLoginSelectionScreen
         preLoginPane.add(newUsersButton, 1, 1);
         preLoginPane.add(employeeButton, 2, 1);
         preLoginPane.add(exitButton, 0, 2);
+        preLoginPane.add(helpButton, 2, 2);
 
         //sets the sizes of the pre login screen
         ColumnConstraints column0 = new ColumnConstraints();
