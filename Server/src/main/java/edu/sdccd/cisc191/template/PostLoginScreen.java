@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class PostLoginScreen extends UserInterfaceJavaFX
 {
-    public static Scene display(Stage mainStage)
+    public static Scene customerPostLogin(Stage mainStage)
     {
         //Sets the design and size of the post-login scene
         GridPane postLoginPane = new GridPane();
@@ -52,11 +52,11 @@ public class PostLoginScreen extends UserInterfaceJavaFX
         GridPane.setHalignment(buttonLogout, HPos.CENTER);
         buttonLogout.setOnAction(e ->
         {
-            mainStage.setScene(LoginScreen.display(mainStage));
+            mainStage.setScene(PreLoginSelectionScreen.preLogin(mainStage));
         });
 
         //sets the positions of the elements on the GridPane
-        postLoginPane.add(currentBalanceText,2,0);
+        postLoginPane.add(currentBalanceText,1,0);
         postLoginPane.add(currentWalletAmount,2,1);
         postLoginPane.add(depositButton, 2,2);
         postLoginPane.add(withdrawButton,2,3);
@@ -70,4 +70,35 @@ public class PostLoginScreen extends UserInterfaceJavaFX
         return postLoginScene;
     }
 
+    public static Scene employeePostLogin(Stage mainStage)
+    {
+        //Sets the design and size of the post-login scene
+        GridPane employeePostLoginPane = new GridPane();
+        employeePostLoginPane.setPadding(new Insets(20, 20, 20, 20));
+        employeePostLoginPane.setHgap(20);
+        employeePostLoginPane.setVgap(20);
+
+        Scene postLoginScene = new Scene(employeePostLoginPane, 200, 260);
+
+        //Need to implement editing of customer data
+
+
+        //logs the user out and takes them to the login screen
+        Button buttonLogout = new Button("Logout");
+        GridPane.setHalignment(buttonLogout, HPos.CENTER);
+        buttonLogout.setOnAction(e ->
+        {
+            mainStage.setScene(PreLoginSelectionScreen.preLogin(mainStage));
+        });
+
+        //sets the positions of the elements on the GridPane
+        employeePostLoginPane.add(buttonLogout, 2,4);
+
+
+        mainStage.setScene(postLoginScene);
+        mainStage.setTitle("The Totally NOT Fraudulent Bank");
+        mainStage.show();
+
+        return postLoginScene;
+    }
 }

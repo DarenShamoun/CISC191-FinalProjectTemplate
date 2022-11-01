@@ -20,22 +20,6 @@ public class JavaFXComponents
             return new Button(name);
         }
 
-        //not enough time to correctly modularize the code (will get back to it later)
-
-//        public Button customWithdrawalButton()
-//        {
-//            customWithdrawalButton().setOnAction(e ->
-//            {
-//                final double moneyInWallet[] = User.getWalletAmount();
-//                moneyInWallet[0] -= Integer.parseInt(customWithdrawalTextField.getText());
-//                System.out.println(moneyInWallet[0]);
-//                currentWalletAmount.setText(moneyInWallet[0]+"");
-//            });
-//        }
 
 
-//        User
-//        User.moneyInWallet[0] += preBuiltOptions[0][0];
-//            System.out.println(moneyInWallet[0]);
-//            currentWalletAmount.setText(moneyInWallet[0]+"");
 }

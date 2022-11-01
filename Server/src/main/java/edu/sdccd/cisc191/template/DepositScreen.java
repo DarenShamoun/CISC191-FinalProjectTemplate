@@ -56,7 +56,7 @@ public class DepositScreen extends UserInterfaceJavaFX
         GridPane.setMargin(backButton, new Insets(10, 10, 10, 10));
         backButton.setOnAction(e ->
         {
-            mainStage.setScene(PostLoginScreen.display(mainStage));
+            mainStage.setScene(PostLoginScreen.customerPostLogin(mainStage));
         });
 
         //deposit 100 dollars

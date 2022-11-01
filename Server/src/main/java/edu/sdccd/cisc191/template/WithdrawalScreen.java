@@ -54,7 +54,7 @@ public class WithdrawalScreen extends UserInterfaceJavaFX
         //navigate back to previous page
         Button backButton = new Button("Back");
         GridPane.setMargin(backButton, new Insets(10, 10, 10, 10));
-        backButton.setOnAction(e -> mainStage.setScene(PostLoginScreen.display(mainStage)));
+        backButton.setOnAction(e -> mainStage.setScene(PostLoginScreen.customerPostLogin(mainStage)));
 
         //withdraw 100 dollars
         Button hundredWithdrawalButton = new Button(" - $100");
