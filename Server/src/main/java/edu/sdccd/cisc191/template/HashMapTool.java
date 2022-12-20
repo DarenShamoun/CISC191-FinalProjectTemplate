@@ -86,7 +86,8 @@ public class HashMapTool {
         ParallelTest2();
     }
 
-    static void CompoundInterest() {
+    static void CompoundInterest()
+    {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter the principal amount: ");
