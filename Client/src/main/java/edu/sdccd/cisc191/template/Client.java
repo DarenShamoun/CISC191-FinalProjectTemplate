@@ -1,49 +1,36 @@
 package edu.sdccd.cisc191.template;
 
-import java.net.*;
-import java.io.*;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 
-public class Client
-{
+public class Client {
     static Socket s;
     static JTextArea chattingBoard;
 
-    public static void main(String[] args)
-    {
-        try
-        {
+    public static void main(String[] args) {
+        try {
             s = new Socket("LocalHost",4044);
             chat();
 
         }
-        catch (UnknownHostException e)
-        {
+        catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void chat()
-    {
+    private static void chat() {
         JFrame jFrame = new JFrame("Online Customer Service");
         jFrame.setSize(600,450);
         jFrame.setLayout(new BorderLayout());
@@ -92,19 +79,15 @@ public class Client
         tfMsg.grabFocus();
 
         //add an ActionListener
-        sendButton.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
+        sendButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 String message =  tfMsg.getText();
-                if (message.equals(""))
-                {
+                if (message.equals("")) {
                     JOptionPane.showMessageDialog(jFrame, "cannot be blank");
                     return;
                 }
 
-                try
-                {
+                try {
                     OutputStream outputStream = s.getOutputStream();
                     // socket sent out the message
                     PrintWriter pw = new PrintWriter(new OutputStreamWriter(outputStream));
@@ -119,8 +102,7 @@ public class Client
 
 
                 }
-                catch (IOException ee)
-                {
+                catch (IOException ee) {
                     ee.printStackTrace();
                 }
             }
@@ -178,4 +160,3 @@ public class Client
 //        }
 //    }
 //} //end class Client
-

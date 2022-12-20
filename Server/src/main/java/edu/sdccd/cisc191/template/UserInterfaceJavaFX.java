@@ -17,7 +17,7 @@ public class UserInterfaceJavaFX extends Application
         new UserDataHandling.CreateFile();
         //sets the initial scene to the login scene and gives it a title
         primaryStage.setScene(PreLoginSelectionScreen.preLogin(primaryStage));
-        primaryStage.setTitle("The Totally NOT Fraudulent Bank");
+        primaryStage.setTitle("The Cookie Bank");
         primaryStage.show();
     }
 }
