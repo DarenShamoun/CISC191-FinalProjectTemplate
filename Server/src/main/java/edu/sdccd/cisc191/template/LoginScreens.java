@@ -53,7 +53,7 @@ public class LoginScreens
             String email = textFieldEmail.getText();
             double[] wallet = {0.0};
 
-            Customer temp = new Customer(firstName,lastName,email,wallet);
+            User temp = new User(firstName,lastName,email,wallet);
             try
             {
                 File myObj = new File("userdata.txt");
@@ -161,7 +161,7 @@ public class LoginScreens
             String email = textFieldEmail.getText();
             double[] wallet = {0.0};
 
-            Customer temp = new Customer(firstName,lastName,email,wallet);
+            User temp = new User(firstName,lastName,email,wallet);
             try
             {
                 File myObj = new File("userdata.txt");
@@ -173,7 +173,7 @@ public class LoginScreens
                 {
                     System.out.println("User data file already exists.");
                 }
-                Customer stored = UserDataHandling.readObjectFromFile(myObj);
+                User stored = UserDataHandling.readObjectFromFile(myObj);
                 if(!Objects.equals(temp, stored))
                 {
                     labelHint.setText("The information you entered is invalid, try again.");
@@ -252,7 +252,7 @@ public class LoginScreens
             String email = textFieldEmail.getText();
             double[] wallet = {0.0};
 
-            Customer temp = new Customer(firstName,lastName,email,wallet);
+            User temp = new User(firstName,lastName,email,wallet);
             try
             {
                 File myObj = new File("userdata.txt");
@@ -264,7 +264,7 @@ public class LoginScreens
                 {
                     System.out.println("User data file already exists.");
                 }
-                Customer stored = UserDataHandling.readObjectFromFile(myObj);
+                User stored = UserDataHandling.readObjectFromFile(myObj);
                 if(!Objects.equals(temp, stored))
                 {
                     labelHint.setText("The information you entered is invalid, try again.");

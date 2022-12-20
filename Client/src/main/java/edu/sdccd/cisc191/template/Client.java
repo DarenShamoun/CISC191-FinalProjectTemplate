@@ -127,7 +127,7 @@ public class Client
         });
 
         // use thread to receive
-        new ReceiveThread(s, chattingBoard).start();
+        new ReceiveThread(Client.s, chattingBoard).start();
     }
 }
 
